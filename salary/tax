@@ -1,0 +1,37 @@
+int salary;
+int tax;
+
+while (1)
+{
+	tax = 0;
+	printf("Enter your annual salary(unit: 1,000won)>>");
+	scanf_s("%d" , &salary);
+	if (salary == 0)
+	{
+		return 0;
+	}
+	if (salary <= 12000)
+	{
+		tax = salary * 0.066;
+	}
+	else if (salary > 12000 && salary <= 46000)
+	{
+		tax = (12000 * 6 / 100) + ((salary - 12000) * 15 / 100);
+	}
+	else if (salary > 46000 && salary <= 88000)
+	{
+		tax = (12000 * 6 / 100) + ((46000 - 12000) * 15 / 100) + ((salary - 46000) * 24 / 100);
+	}
+	else if (salary > 88000 && salary <= 150000)
+	{
+		tax = (12000 * 6 / 100) + ((46000 - 12000) * 15 / 100) + ((88000 - 46000) * 0.24) + (salary - 8800) * 35 / 100;
+	}
+	else if (salary > 15000 && salary <= 30000)
+	{
+		tax = 1200 * 6 / 100 + ((46000 - 12000) * 15 / 100) + ((88000 - 46000) * 0.24) + ((88000 - 46000) * 0.35) + ((salary - 150000) * 38 / 100);
+	}
+	
+
+
+	printf("  your tax is %d thousand won\n", tax);
+}
