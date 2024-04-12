@@ -1,0 +1,36 @@
+#include <stdio.h>
+int main() {
+	int n, temp;
+	while (1)
+	{
+		printf("Enter an integer>> ");
+		scanf_s("%d", &n);
+		if (n == 0)
+		{
+			return 0;
+		}
+		while (n > 0)
+		{
+			for (int i = n; i >= 1; i--)
+			{
+				while(n>=(i*i*i)) //n이 i세제곱보다 크면 같은 i를 또 다시 세제곱 해서 뺀 후 출력하도록 함
+				{ 
+					if (n - (i * i * i) >= 0)
+					{
+						printf("%d", (i * i * i));
+						n = n - (i * i * i);
+						if (n > 0)
+						{
+							printf("+");
+						}
+					}
+				}
+			}
+		}
+
+		printf("\n");
+	}
+
+
+	return 0;
+}
