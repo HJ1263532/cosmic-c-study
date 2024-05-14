@@ -1,0 +1,41 @@
+#include<stdio.h>
+#define NUMEL 1000
+int main(void)
+{
+	int arr[NUMEL];
+	int n,a, temp;
+	a = 0, temp=0;
+	printf("Enter the number of integers>> ");
+	scanf_s("%d",&n);
+	printf("Enter integers>> ");
+	
+	for (a = 0; a < n; a++)
+	{
+		scanf_s("%d", &arr[a]);
+	}
+  	//선택정렬
+	int min;
+	for (int i = 0; i < n - 1; i++) //비교를 n-1번 반복하기
+	{
+		min = i; //꼭 필요한 부분
+		for (int j = i + 1; j < n; j++)//0번 칸이 아닌 1번 칸부터 비교
+		{
+			if (arr[j] < arr[min])
+			{
+				min = j; //최솟값 찾기
+			}
+		}
+		temp = arr[min];
+		arr[min] = arr[i];
+		arr[i] = temp;
+	}
+
+	printf("After sorting: ");
+	for (int i = 0; i < n; i++)
+	{
+		printf("%d ",arr[i]);
+	}
+
+
+	return 0;
+}
