@@ -1,0 +1,63 @@
+#include<stdio.h>
+#define NUMEL 1000
+int main(void)
+{
+	//진수와 숫자를 입력으로 받아, 다른 진수의 숫자로 바꾸어 출력하는 
+	//프로그램을 작성하라. 입력 진수가 0이면 프로그램을 종료하라
+	//(1번 문제의 예: 5진수 42를 3진수로 변환)
+	int base, num, base2, arr[NUMEL], ten;
+	int brr[1000];
+
+	while (1)
+	{
+		base = 0, num = 0, base2 = 0,ten=0;
+		printf("Enter base-from, number, base_to>> ");
+		scanf_s("%d%d%d",&base, &num, &base2);
+		if (base == 0)
+		{
+			return 0;
+		}
+		int a=0;
+		for ( int i = 0; i <= num; i++)//num의 숫자를 하니씩 분리
+		{
+			arr[i] = num % 10;
+			num /= 10;
+			a++;
+		}
+
+		for (int j = 1; j < a; j++)//base진수를 10진수 숫자 각각으로
+		{
+			int n = base;
+			for (int k = 1; k < j; k++)
+			{
+				base *= n;
+			}
+						
+			arr[j] = arr[j] * base;
+		}
+		for (int j = 0; j < a; j++)//10진수 완성
+		{
+			ten += arr[j];
+		}
+		int count = 0;
+		for (int j = 0; j<=ten+1 ; j++)//base2진수 각각으로 변환
+		{
+			brr[j] = ten % base2;
+			ten /= base2;
+			count++;
+		}
+		
+		if (ten > 0)
+		{
+			printf("%d",ten);
+		}
+		for (int j = count - 1; j >= 0; j--)
+		{
+			printf("%d",brr[j]);
+		}
+		printf("\n");
+		
+	}
+
+	return 0;
+}
