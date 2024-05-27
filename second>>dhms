@@ -1,0 +1,40 @@
+#include<stdio.h>
+int main(void)
+{
+	int d = 0, h = 0, m = 0, s = 0;
+	while (1)
+	{
+		printf("Enter a seconds>> ");
+		scanf_s("%d",&s);
+		if (s == 0)
+		{
+			return 0;
+		}
+		d = s / 86400;
+		s %= 86400;
+		if (d > 0)
+		{
+			printf("%dd",d);
+		}
+		h = s /3600;
+		s %= 3600;
+		if (h > 0)
+		{
+			printf("%dh", h);
+		}
+		m = s / 60;
+		s %= 60;
+
+		if (m > 0)
+		{
+			printf("%dm", m);
+		}
+		if (d > 0)
+		{
+			printf("%ds", s);
+		}
+		printf("\n");
+	}
+
+	return 0;
+}
