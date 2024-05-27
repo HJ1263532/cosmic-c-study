@@ -1,0 +1,30 @@
+#include<stdio.h>
+int main(void)
+{
+	int a, b, c;
+	while (1)
+	{
+		a = 0, b = 0, c = 0;
+		
+		printf("Enter three integers>> ");
+		scanf_s("%d%d%d", &a, &b, &c);
+		if (a == 0 || b == 0 || c == 0)
+		{
+			return 0;
+		}
+		int as = a * a;
+		int bs = b * b;
+		int cs = c * c;
+		if ( bs == as +cs || cs == bs + as||as==bs+cs)
+		{
+			printf("  Result>>Right");
+		}
+		else
+		{
+			printf("  Result>>Wrong");
+		}
+		printf("\n");
+	}
+
+	return 0;
+}
