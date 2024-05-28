@@ -1,0 +1,32 @@
+//1번 10진수를 입력하여 임의의 진수로 바꾸는 프로그램을 작성하라.
+//입력 수가 0이면 프로그램을 종료하라.
+//16진수까지로 하고 10이상의 숫자는 a, b, c, d, e, f로 표현하라
+
+#include <stdio.h>
+
+int main()
+{
+    int mul, num, base, tbase = 1;
+    while (1)
+    {
+        printf("Enter a number and a base>> ");
+        scanf_s("%d %d", &num, &base);
+
+        if (num == 0&&base==0) return 1;
+
+        
+        while (tbase <= num) tbase *= base;
+
+        do {
+            tbase /= base;
+            mul = num / tbase;
+
+            if (mul < 10)    printf("%d", mul);    // 10진수 이하 
+            else printf("%c", mul - 10 + 'A');    // 11진수 이상 
+            num -= mul * tbase;
+        } while (tbase >= base);
+
+       printf("\n", base);
+    }
+    
+}
