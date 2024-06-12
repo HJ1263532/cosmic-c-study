@@ -1,0 +1,92 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int fun(int mul, int n, int jin)
+{
+	if (n == 0) return 0;
+	else return mul * (n % 10) + fun(mul * jin, n / 10, jin);
+}
+int main(void)
+{
+//10진수를 입력하여 임의의 진수로 바꾸는 프로그램을 작성하라. 입력 수가 0이면 프로그램을 종료하라. 
+//16진수까지로 하고 10 이상의 숫자는 a,b,c,d,e,f로 표현하라.
+//Enter a number and a base>> 25 2
+//  11001
+//Enter a number and a base>> 30 16
+//  1e
+//Enter a number and a base>> 0 0
+
+	while (1)
+	{
+		int num, base, mul, tbase = 1;
+		printf("Enter a number and a base>> ");
+		scanf("%d%d", &num, &base);
+		if (num == 0)
+			return 0;
+		while (tbase <= num)
+			tbase *= base;
+		printf("  ");
+		do {
+			tbase /= base;
+			mul = num / tbase;
+			if (mul < 10)printf("%d", mul);
+			else printf("%c", mul - 10 + 'a');
+			num -= mul * tbase;
+		} while (tbase >= base);
+
+
+		printf("\n");
+	}
+
+// 진수와 숫자를 입력으로 받아, 10진수의 숫자로 바꾸어 출력하는 프로그램을 작성하라. 입력 진수가 0이면 프로그램을 종료하라.
+//Enter a base and a number>> 5 42
+//  22
+//Enter a base and a number>> 2 11001
+//  25
+//Enter a base and a number>> 0 0
+  while (1)
+  {
+  	int a, b;
+  	printf("Enter a base and a number>> ");
+  	scanf("%d%d", &a, &b);
+  	if (a == 0) return 0;
+  	printf("  %d", fun(1, b, a));
+  
+  
+  	printf("\n");
+  }
+
+  //진수와 숫자를 입력으로 받아, 다른 진수의 숫자로 바꾸러 출력하는 프로그램을 작성하라.
+  //입력진수가 0이면 프로그램을 종료하라(첫번째 예:5진수 42를 3진수로 변환)
+  //Enter base-from, number, base_to>> 5 42 3
+  //  211
+  //Enter base-from, number, base_to>> 8 75 2
+  //  111101
+  //Enter base-from, number, base_to>> 0 0 0
+
+  while (1)
+  {
+  	int a = 0, b = 0, num, base = 0, mul, tbase = 1;
+  	printf("Enter base-from, number, base_to>> ");
+  	scanf("%d%d%d", &a, &b, &base);
+  	if (a == 0) return 0;
+  	num = fun(1, b, a);
+  	while (tbase <= num)
+  		tbase *= base;
+  	printf("  ");
+  	do {
+  		tbase /= base;
+  		mul = num / tbase;
+  		if (mul < 10) printf("%d", mul);
+  		else printf("%c", mul - 10 + 'a');
+  		num -= mul * tbase;
+  	} while (tbase >= base);
+  
+  
+  	printf("\n");
+  }
+ 
+	return 0;
+}
+
