@@ -1,0 +1,115 @@
+#define _CRT_SECURE_NO_WARNINGS
+#include<stdio.h>
+#include<string.h>
+#include<stdlib.h>
+int main(void)
+{
+//두 개의 문자열을 입력으로 받아 첫번째 문자열에 두번째 문자열이 나타난 횟수를 출력하는 프로그램을 작성하라.
+//quit이 입력되면 프로그램을 종료한다
+//Enter two strings>> representation e
+//  3
+//Enter two strings>> cocomcomputer com
+//2
+//Enter two strings>> quit
+
+
+	while (1)
+	{
+		char arr[1000];
+		char brr[1000];
+		int count = 0, size1, size2;
+		printf("Enter two strings>> ");
+		scanf("%s", arr, 1000);
+		if (strcmp(arr, "quit") == 0) {
+			return 0;
+		}
+		scanf("%s", brr, 1000);
+		size1 = strlen(arr);
+		size2 = strlen(brr);
+		for (int i = 0; i <= size1 - size2; i++) {
+			if (strncmp(&arr[i], brr, size2) == 0) {
+				count++;
+			}
+		}
+		printf("  %d", count);
+
+
+		printf("\n");
+	}
+
+//문자와 숫자가 섞여 있는 한 라인을 입력으로 하여, 그 중 숫자만을 찾아 더하는 프로그램을 작성하라. 0을 입력하면 프로그램을 종료한다.
+//입출력 양식은 아래와 같이 하라.(띄어 쓰지 않아도 처리되도록 하라)
+//Enter a line>> 5and3+4 is12
+//  The sum of all numbers: 24
+//Enter a line>> 10+3*2+15 is 31
+//  The sum of all numbers: 61
+//Enter a line>> 0
+  while (1)
+  {
+  	char arr[1000];
+  	int num = 0, total = 0;
+  	printf("Enter a line>> ");
+  	fgets(arr, 1000, stdin);
+  	if (arr[0] == '0')
+  		return 0;
+  	int i = 0;
+  	while (arr[i] != '\0') {
+  		if (arr[i] >= '0' && arr[i] <= '9')
+  			num = num * 10 + (arr[i] - '0');
+  		else {
+  			total += num;
+  			num = 0;
+  		}
+  		i++;
+  	}
+  	total += num;
+  	printf("  The sum of all numbers: %d", total);
+  
+  
+  	printf("\n");
+  }
+
+//덧셈과 뺄셈만으로 된 수식을 입력으로 받아 결과를 계산하는 프로그램을 작성하라. enter키를 입력하면 프로그램을 종료하라.
+//Enter an expresssion>> 12+3-7+5
+//  Value: 13
+//Enter an expresssion>> 10 - 3 + 15-3
+//  Value: 19
+//Enter an expresssion>> 
+
+  while (1)
+  {
+  	char arr[1000];
+  	int num = 0, total = 0, sign = 1;
+  	printf("Enter an expression>> ");
+  	fgets(arr, 1000, stdin);
+  	if (strcmp(arr, "\n") == 0)
+  		return 0;
+  	int i = 0;
+  	while (arr[i] != '\0') {
+  		if (arr[i] >= '0' && arr[i] <= '9')
+  			num = num * 10 + (arr[i] - '0');
+  		if (arr[i] == '+') {
+  			total += sign * num;
+  			num = 0;
+  			sign = 1;
+  		}
+  		if (arr[i] == '-') {
+  			total += sign * num;
+  			num = 0;
+  			sign = -1;
+  		}
+  		i++;
+  	}
+  	total += sign * num;
+  	printf("  Value: %d", total);
+
+
+	printf("\n");
+}
+
+
+	return 0;
+}
+
+
+
